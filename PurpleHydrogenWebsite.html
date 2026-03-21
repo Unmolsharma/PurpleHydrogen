@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purple Hydrogen Corp — Biological Gas Conversion Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06040F;--bg2:#0D0820;--purple:#7C3AED;--purple-l:#A78BFA;--purple-d:#3B0764;--green:#10B981;--green-l:#6EE7B7;--red:#EF4444;--white:#FFFFFF;--muted:#9B8FCC;--card:rgba(18,9,43,0.9);--border:rgba(124,58,237,0.18);--font-d:'Bebas Neue',sans-serif;--font-b:'DM Sans',sans-serif;--font-m:'DM Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font-b);font-weight:300;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3.5rem;background:rgba(6,4,15,0.75);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s}
+.nav-logo{font-family:var(--font-d);font-size:1.45rem;letter-spacing:.08em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:.55rem}
+.nav-logo span{color:var(--purple-l)}
+.logo-pulse{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 12px var(--green)}50%{opacity:.4;box-shadow:0 0 4px var(--green)}}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--purple)!important;color:var(--white)!important;padding:.45rem 1.2rem;border-radius:3px;box-shadow:0 0 20px rgba(124,58,237,.35);transition:all .2s!important}
+.nav-cta:hover{background:#6D28D9!important;transform:translateY(-1px)!important;box-shadow:0 0 30px rgba(124,58,237,.55)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px;transition:all .3s}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:floatorb 14s ease-in-out infinite}
+.o1{width:55vw;height:55vw;background:radial-gradient(circle,#4C1D95,transparent 70%);top:-15%;right:-10%;opacity:.32;animation-delay:0s}
+.o2{width:30vw;height:30vw;background:radial-gradient(circle,#10B981,transparent 70%);bottom:15%;left:2%;opacity:.12;animation-delay:-5s}
+.o3{width:20vw;height:20vw;background:radial-gradient(circle,#7C3AED,transparent 70%);top:45%;left:42%;opacity:.18;animation-delay:-9s}
+@keyframes floatorb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(2%,3%) scale(1.04)}66%{transform:translate(-2%,-2%) scale(.97)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.035) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.12);border:1px solid var(--border);padding:.35rem 1rem;border-radius:2px;font-family:var(--font-m);font-size:.72rem;color:var(--purple-l);letter-spacing:.1em;margin-bottom:1.8rem;width:fit-content;animation:fiu .8s ease both}
+.tag-dot{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green)}
+.hero-title{font-family:var(--font-d);font-size:clamp(5rem,12vw,11rem);line-height:.9;letter-spacing:.02em;margin-bottom:2rem;animation:fiu .8s .1s ease both}
+.hero-title .l1{color:var(--white);display:block}
+.hero-title .l2{color:var(--purple-l);display:block}
+.hero-title .l3{color:transparent;-webkit-text-stroke:1px rgba(167,139,250,.28);display:block}
+.hero-sub{max-width:580px;font-size:1.05rem;color:var(--muted);line-height:1.78;margin-bottom:2.5rem;font-weight:300;animation:fiu .8s .2s ease both}
+.hero-sub strong{color:var(--green-l);font-weight:500}
+.hero-btns{display:flex;gap:1rem;align-items:center;animation:fiu .8s .3s ease both}
+.btn-p{background:var(--purple);color:var(--white);padding:.85rem 2rem;border-radius:3px;text-decoration:none;font-weight:500;font-size:.88rem;letter-spacing:.03em;transition:all .2s;box-shadow:0 0 28px rgba(124,58,237,.4)}
+.btn-p:hover{background:#6D28D9;transform:translateY(-2px);box-shadow:0 0 40px rgba(124,58,237,.6)}
+.btn-s{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.btn-s:hover{color:var(--white)}
+.hero-stats{display:flex;margin-top:4.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);animation:fiu .8s .4s ease both}
+.hstat{flex:1;padding:1.4rem 2rem;border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none}
+.sv{font-family:var(--font-d);font-size:2.6rem;color:var(--purple-l);line-height:1;margin-bottom:.25rem;letter-spacing:.02em}
+.sl{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+@keyframes fiu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+section{padding:7rem 4rem;position:relative}
+.s-tag{font-family:var(--font-m);font-size:.7rem;color:var(--purple-l);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.s-tag::before{content:'';width:22px;height:1px;background:var(--purple)}
+.s-title{font-family:var(--font-d);font-size:clamp(2.6rem,4.5vw,4.8rem);line-height:.95;letter-spacing:.02em;margin-bottom:1.2rem}
+.s-title em{font-style:normal;color:var(--purple-l)}
+.s-body{font-size:.98rem;color:var(--muted);max-width:520px;line-height:1.8}
+
+/* PROBLEM */
+.prob-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3.5rem;background:var(--border)}
+.p-card{background:var(--bg);padding:2.8rem;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.p-card.p1::before{background:var(--red)}.p-card.p2::before{background:var(--purple)}
+.p-num{font-family:var(--font-d);font-size:5rem;color:rgba(124,58,237,.06);position:absolute;top:.8rem;right:1.2rem;line-height:1;pointer-events:none}
+.p-icon{font-size:1.8rem;margin-bottom:1rem}
+.p-card h3{font-family:var(--font-d);font-size:1.9rem;letter-spacing:.02em;margin-bottom:.9rem}
+.p-card p{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:1.8rem}
+.pstats{display:flex;flex-direction:column;gap:.7rem}
+.ps{display:flex;align-items:center;gap:.9rem;padding:.7rem .9rem;background:rgba(124,58,237,.06);border-left:2px solid var(--purple)}
+.psv{font-family:var(--font-d);font-size:1.55rem;color:var(--purple-l);line-height:1;white-space:nowrap}
+.psl{font-size:.8rem;color:var(--muted);line-height:1.4}
+.h2-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.5rem}
+.h2t{display:flex;align-items:flex-start;gap:.9rem;padding:.75rem .9rem;border-left:2px solid}
+.h2t.bad{border-color:var(--red);background:rgba(239,68,68,.04)}
+.h2t.good{border-color:var(--green);background:rgba(16,185,129,.06)}
+.h2n{font-weight:600;font-size:.87rem;white-space:nowrap;min-width:68px}
+.h2t.bad .h2n{color:#FCA5A5}.h2t.good .h2n{color:var(--green-l)}
+.h2d{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* HOW IT WORKS */
+.how-sec{background:var(--bg)}
+.flow{display:grid;grid-template-columns:1fr auto 1.55fr auto 1fr;gap:.8rem;align-items:stretch;margin-top:3.5rem}
+.farr{display:flex;align-items:center;justify-content:center;color:var(--purple);font-size:1.4rem;padding:0 .3rem}
+.fbox{background:var(--card);border:1px solid var(--border);padding:1.8rem;backdrop-filter:blur(10px)}
+.fbox.fbig{background:var(--purple-d);border-color:var(--purple);box-shadow:0 0 40px rgba(124,58,237,.22)}
+.flabel{font-family:var(--font-m);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.fbox.fin .flabel{color:#FCA5A5;border-color:rgba(239,68,68,.2)}
+.fbox.fbig .flabel{color:var(--purple-l);border-color:rgba(167,139,250,.25)}
+.fbox.fout .flabel{color:var(--green-l);border-color:rgba(16,185,129,.18)}
+.fi{font-size:.83rem;color:var(--muted);padding:.35rem 0;display:flex;align-items:center;gap:.45rem}
+.fi::before{content:'\2192';color:var(--purple-l);font-size:.72rem}
+.fout .fi::before{content:'\2713';color:var(--green)}
+.bstep{font-size:.8rem;color:var(--purple-l);padding:.45rem 0;display:flex;align-items:flex-start;gap:.55rem;border-bottom:1px solid rgba(124,58,237,.08)}
+.bstep:last-child{border-bottom:none}
+.bstep b{color:var(--white)}
+.sci-tag{text-align:center;margin-top:2.5rem;font-family:var(--font-m);font-size:.72rem;color:rgba(167,139,250,.4);letter-spacing:.1em}
+
+/* MODULAR CALLOUT */
+.modular-strip{margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.mod-card{background:var(--bg2);padding:2rem;transition:background .3s}
+.mod-card:hover{background:rgba(124,58,237,.06)}
+.mod-icon{font-size:1.6rem;margin-bottom:.9rem}
+.mod-title{font-weight:600;font-size:.95rem;color:var(--white);margin-bottom:.5rem}
+.mod-body{font-size:.83rem;color:var(--muted);line-height:1.7}
+
+/* DOCUMENTS */
+.docs-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.docs-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;margin-top:3rem}
+.doc-list{display:flex;flex-direction:column;gap:2px;background:var(--border)}
+.doc-item{background:var(--bg);padding:1.5rem 1.7rem;display:flex;align-items:center;gap:1.1rem;cursor:pointer;transition:background .2s;text-decoration:none;color:inherit}
+.doc-item:hover{background:rgba(124,58,237,.08)}
+.doc-icon{width:40px;height:40px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.doc-icon.paper{background:rgba(124,58,237,.15);color:var(--purple-l)}
+.doc-icon.pdf{background:rgba(239,68,68,.12);color:#FCA5A5}
+.doc-icon.green{background:rgba(16,185,129,.12);color:var(--green-l)}
+.doc-icon.ph{background:rgba(124,58,237,.05);color:rgba(167,139,250,.25);border:1px dashed rgba(124,58,237,.18)}
+.doc-meta{flex:1}
+.doc-title{font-weight:500;font-size:.88rem;color:var(--white);margin-bottom:.22rem}
+.doc-sub{font-size:.75rem;color:var(--muted);line-height:1.45}
+.doc-badge{font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;padding:.18rem .5rem;border-radius:2px;flex-shrink:0;white-space:nowrap}
+.doc-badge.live{background:rgba(16,185,129,.12);color:var(--green-l)}
+.doc-badge.soon{background:rgba(124,58,237,.1);color:var(--purple-l)}
+.deck-feature{background:var(--purple-d);border:1px solid var(--purple);padding:2.5rem;position:relative;overflow:hidden}
+.deck-feature::before{content:'';position:absolute;top:-40%;right:-20%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(124,58,237,.25),transparent 70%);pointer-events:none}
+.deck-label{font-family:var(--font-m);font-size:.68rem;color:var(--purple-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem}
+.deck-title{font-family:var(--font-d);font-size:2.2rem;letter-spacing:.02em;margin-bottom:.8rem;line-height:1}
+.deck-body{font-size:.88rem;color:var(--muted);line-height:1.72;margin-bottom:1.8rem}
+.deck-slides{display:flex;flex-direction:column;gap:.42rem;margin-bottom:1.8rem}
+.ds{display:flex;align-items:center;gap:.7rem;font-size:.82rem}
+.ds-num{font-family:var(--font-m);font-size:.65rem;color:rgba(167,139,250,.4);min-width:20px}
+.ds-title{color:var(--white);font-weight:500;flex:1}
+.ds-desc{font-size:.75rem;color:var(--muted)}
+.deck-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* MARKET */
+.mkt-sec{background:var(--bg)}
+.mkt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border);margin-top:3.5rem}
+.mc{background:var(--bg2);padding:2.2rem;position:relative;transition:background .3s}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.mc.tam::before{background:linear-gradient(90deg,var(--purple-d),var(--purple))}
+.mc.sam::before{background:var(--purple)}
+.mc.som::before{background:linear-gradient(90deg,var(--purple),var(--green))}
+.mc:hover{background:rgba(124,58,237,.05)}
+.m-acr{font-family:var(--font-m);font-size:.68rem;color:var(--muted);letter-spacing:.15em;margin-bottom:.7rem}
+.m-val{font-family:var(--font-d);font-size:3.4rem;line-height:1;letter-spacing:.02em;margin-bottom:.7rem}
+.tam .m-val,.sam .m-val{color:var(--purple-l)}.som .m-val{color:var(--green-l)}
+.m-name{font-weight:600;font-size:.87rem;color:var(--white);margin-bottom:.9rem}
+.m-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
+
+/* TEAM */
+.team-sec{background:var(--bg2);border-top:1px solid var(--border)}
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:3.5rem}
+.fc{background:var(--bg);padding:2.8rem;transition:background .3s;position:relative}
+.fc::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,var(--purple),transparent)}
+.fc:hover{background:rgba(124,58,237,.04)}
+.f-role{font-family:var(--font-m);font-size:.68rem;color:var(--purple-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem}
+.f-name{font-family:var(--font-d);font-size:2.4rem;letter-spacing:.02em;margin-bottom:.4rem}
+.f-uni{font-size:.8rem;color:var(--green-l);margin-bottom:1.4rem;font-weight:500}
+.f-bio{font-size:.88rem;color:var(--muted);line-height:1.75}
+.adv-title{font-family:var(--font-m);font-size:.7rem;color:var(--purple-l);letter-spacing:.12em;text-transform:uppercase;margin-top:3rem;margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+.adv-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border)}
+.ac{background:var(--bg);padding:1.4rem;transition:background .2s}
+.ac:hover{background:rgba(124,58,237,.07)}
+.a-name{font-weight:600;font-size:.88rem;color:var(--white);margin-bottom:.25rem}
+.a-role{font-size:.73rem;color:var(--purple-l);margin-bottom:.55rem;line-height:1.4}
+.a-bio{font-size:.74rem;color:var(--muted);line-height:1.55}
+.a-tag{display:inline-block;margin-top:.55rem;font-family:var(--font-m);font-size:.6rem;color:var(--purple-l);background:rgba(124,58,237,.1);padding:.18rem .5rem;letter-spacing:.06em}
+
+/* CTA */
+.cta-sec{background:var(--bg);text-align:center;padding:8rem 4rem;border-top:1px solid var(--border);position:relative;overflow:hidden}
+.cta-orb{position:absolute;width:60vw;height:60vw;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-label{font-family:var(--font-m);font-size:.73rem;color:var(--purple-l);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.4rem}
+.cta-title{font-family:var(--font-d);font-size:clamp(3.5rem,7vw,7rem);line-height:.92;letter-spacing:.02em;margin-bottom:1.8rem}
+.cta-title .ca{color:var(--white)}.cta-title .cb{color:var(--purple-l)}.cta-title .cc{color:var(--green-l)}
+.cta-sub{font-size:.98rem;color:var(--muted);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.72}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.contact-row{margin-top:2.5rem;font-family:var(--font-m);font-size:.78rem;color:var(--muted);letter-spacing:.05em}
+.contact-row a{color:var(--purple-l);text-decoration:none;transition:color .2s}
+.contact-row a:hover{color:var(--white)}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align-items:center;justify-content:space-between}
+.fl{font-family:var(--font-d);font-size:1.15rem;letter-spacing:.08em;color:var(--muted)}.fl span{color:var(--purple-l)}
+.fc2{font-size:.7rem;color:rgba(155,143,204,.35);font-family:var(--font-m);letter-spacing:.05em}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media(max-width:1024px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:rgba(6,4,15,.97);padding:1.5rem;gap:1.2rem;border-bottom:1px solid var(--border);z-index:199}
+  .hamburger{display:flex}
+  section{padding:4.5rem 1.5rem}
+  .hero{padding:7rem 1.5rem 3rem}
+  .prob-grid,.founders,.adv-grid,.modular-strip,.mkt-grid{grid-template-columns:1fr}
+  .flow{display:flex;flex-direction:column}
+  .docs-layout{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap}
+  .hstat{border-right:none;border-bottom:1px solid var(--border);min-width:50%}
+  footer{flex-direction:column;gap:.8rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="logo-pulse"></div>
+    PURPLE <span>H&#8322;</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Technology</a></li>
+    <li><a href="#documents">Research</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-tag"><div class="tag-dot"></div> WASTE REMEDIATION <span style="margin:0 0.4em;opacity:0.4;">&#183;</span> HYDROGEN ENERGY</div>
+  <h1 class="hero-title">
+    <span class="l1">PURPLE</span>
+    <span class="l2">HYDROGEN</span>
+    <span class="l3">CORP.</span>
+  </h1>
+  <p class="hero-sub"> We convert your industrial <span style="color:#FCA5A5;background:rgba(239,68,68,0.12);padding:0.05em 0.4em;border-radius:2px;">sulfide-rich waste</span> directly into<br><strong style="color:var(--green-l);">clean hydrogen fuel.</strong><br><span style="display:block;margin-top:0.6rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.08em;"><span style="color:#FCA5A5;">Waste In.</span> <span style="color:var(--green-l);">Fuel Out.</span></span>
+  <div class="hero-btns">
+    <a href="#solution" class="btn-p">See How It Works</a>
+    <a href="#contact" class="btn-s">Partner With Us &#8594;</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="sv">$2.01B</div><div class="sl">H&#8322;S Treatment Market by 2030</div></div>
+    <div class="hstat"><div class="sv">$3&#8211;7</div><div class="sl">Per kg &#8212; Green Hydrogen Price</div></div>
+    <div class="hstat"><div class="sv">30.1%</div><div class="sl">Biohydrogen Market CAGR</div></div>
+    <div class="hstat"><div class="sv">TRL 4</div><div class="sl">Validated. Scaling to Pilot.</div></div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="prob-sec" id="problem">
+  <div class="s-tag">The Problem</div>
+  <h2 class="s-title">Two Global <em>Problems.</em><br>One Platform.</h2>
+  <p class="s-body">Every major industry produces hydrogen sulfide with no good answer &#8212; while the world simultaneously struggles to produce clean hydrogen at scale.</p>
+  <div class="prob-grid reveal">
+    <div class="p-card p1">
+      <div class="p-num">01</div>
+      <div class="p-icon">&#9888;&#65039;</div>
+      <h3>H&#8322;S Waste Disposal</h3>
+      <p>Hydrogen sulfide is one of the world&#8217;s most toxic and corrosive industrial gases. Oil &amp; gas, agriculture, pulp &amp; paper, shipbuilding, and defence manufacturing all produce it continuously and are legally required to manage it at significant ongoing cost. Current methods destroy H&#8322;S using chemicals, generate hazardous sludge, and recover nothing.</p>
+      <div class="pstats">
+        <div class="ps"><div class="psv">$1.3B+</div><div class="psl">Annual North American H&#8322;S treatment market</div></div>
+        <div class="ps"><div class="psv">500K+</div><div class="psl">Active North American oil &amp; gas wells with H&#8322;S exposure</div></div>
+        <div class="ps"><div class="psv">$8.5B</div><div class="psl">Annual US oil &amp; gas corrosion costs driven by H&#8322;S</div></div>
+      </div>
+    </div>
+    <div class="p-card p2">
+      <div class="p-num">02</div>
+      <div class="p-icon">&#9889;</div>
+      <h3>Clean Hydrogen Production</h3>
+      <p>The world urgently needs clean hydrogen. But every existing method is either environmentally damaging, prohibitively expensive, or dependent on massive new infrastructure &#8212; and none of them solve a waste problem simultaneously.</p>
+      <div class="h2-list">
+        <div class="h2t bad"><div class="h2n">Grey H&#8322;</div><div class="h2d">Steam methane reforming &#8212; cheapest, but generates 9&#8211;12 kg CO&#8322;e per kg hydrogen. Accounts for 95%+ of all hydrogen produced today.</div></div>
+        <div class="h2t bad"><div class="h2n">Blue H&#8322;</div><div class="h2d">Grey H&#8322; + carbon capture &#8212; still partially emitting, expensive, and dependent on CCS infrastructure that does not yet exist at scale.</div></div>
+        <div class="h2t bad"><div class="h2n">Green H&#8322;</div><div class="h2d">Electrolysis from renewables &#8212; genuinely clean but $3&#8211;7/kg and requires major electrolyser infrastructure investment. Hard to deploy on-site.</div></div>
+        <div class="h2t good"><div class="h2n">Purple H&#8322; &#10003;</div><div class="h2d">Biological conversion of waste H&#8322;S &#8212; clean, on-site, no new energy input required, and simultaneously eliminates the waste disposal problem.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="how-sec" id="solution">
+  <div class="s-tag">The Technology</div>
+  <h2 class="s-title">Waste In.<br><em>Fuel Out.</em></h2>
+  <p class="s-body">Our modular, IoT-enabled photobioreactor uses Purple Sulfur Bacteria and induced anaerobic photosynthesis to convert hydrogen sulfide waste streams into clean hydrogen gas and elemental sulfur &#8212; deployable directly into existing industrial infrastructure.</p>
+
+  <div class="flow reveal">
+  <div class="fbox fin">
+    <div class="flabel">&#9888; Input Stream</div>
+    <div class="fi">H&#8322;S from sour gas processing</div>
+    <div class="fi">Agricultural manure waste</div>
+    <div class="fi">Industrial wastewater</div>
+    <div class="fi">Shipyard effluent</div>
+    <div class="fi">Defence manufacturing waste</div>
+    <div class="fi">Pulp &amp; paper sulfide streams</div>
+  </div>
+  <div class="farr">&#9654;</div>
+  <div class="fbox fbig">
+    <div class="flabel">&#9879; Purple Hydrogen Bioreactor</div>
+    <div class="bstep"><span>&#129516;</span><span><b>Purple Sulfur Bacteria culture</b> &#8212; live microbial system using H&#8322;S as electron donor in anaerobic photosynthesis</span></div>
+    <div class="bstep"><span>&#128161;</span><span><b>850nm near-IR LED arrays</b> &#8212; precise wavelength matching the bacterial absorption peak, energy-efficient and fully programmable</span></div>
+    <div class="bstep"><span>&#128260;</span><span><b>N&#8322; / inert gas purge system</b> &#8212; maintains strict anaerobic conditions and activates nitrogenase and hydrogenase enzyme pathways</span></div>
+    <div class="bstep"><span>&#128225;</span><span><b>IoT sensor network</b> &#8212; real-time pH, temperature, dissolved gas, and biomass monitoring with auto-adjustment and remote dashboard</span></div>
+    <div class="bstep"><span>&#127777;</span><span><b>Temperature regulation (25&#8211;35&#176;C)</b> &#8212; active thermal management for optimal bacterial metabolic activity and hydrogen yield</span></div>
+    <div class="bstep"><span>&#9879;</span><span><b>H&#8322;S inlet + H&#8322; capture outlet</b> &#8212; controlled feedstock delivery with inline purity monitoring validated by GC-MS</span></div>
+  </div>
+  <div class="farr">&#9654;</div>
+  <div class="fbox fout">
+    <div class="flabel">&#10003; Outputs</div>
+    <div class="fi">Clean H&#8322; gas &#8212; $3&#8211;7/kg</div>
+    <div class="fi">Elemental sulfur &#8212; ~$150/t</div>
+    <div class="fi">H&#8322;S removed to compliance</div>
+    <div class="fi">Chemical inputs eliminated</div>
+    <div class="fi">Sludge disposal removed</div>
+    <div class="fi">ESG metrics improved</div>
+  </div>
+</div>
+
+  <p class="sci-tag">INDUCED ANAEROBIC PHOTOSYNTHESIS &middot; BIOLOGICAL GAS CONVERSION &middot; IoT PROCESS CONTROL</p>
+
+  <div class="modular-strip reveal">
+    <div class="mod-card">
+      <div class="mod-icon">&#128268;</div>
+      <div class="mod-title">Connects to Your Waste Stream</div>
+      <div class="mod-body">Our system integrates directly with your existing H&#8322;S waste infrastructure &#8212; no facility rebuild required. Whether you operate sour gas processing, an anaerobic digester, or an industrial wastewater system, the bioreactor connects to your existing outlet and begins converting sulfide waste immediately.</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">&#129520;</div>
+      <div class="mod-title">Modular &amp; Scalable</div>
+      <div class="mod-body">A single unit handles a defined throughput volume. Multiple units deploy in parallel to match your facility&#8217;s H&#8322;S output &#8212; from a small agricultural operation producing modest sulfide volumes to a large natural gas processing facility managing high-concentration sour gas streams. One platform, any scale.</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">&#128241;</div>
+      <div class="mod-title">Remotely Monitored</div>
+      <div class="mod-body">The IoT control system manages bacterial conditions autonomously and surfaces all process data &#8212; hydrogen output, bacterial health, pH, temperature, gas purity &#8212; through a remote dashboard. Your team gets alerts and reports without needing specialist microbiology staff on-site.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="docs-sec" id="documents">
+  <div class="s-tag">Research &amp; Documents</div>
+  <h2 class="s-title">The Science<br><em>Behind It.</em></h2>
+  <p class="s-body">Our work is grounded in third-party validated research. Below are our published studies, technical reports, and pitch materials.</p>
+
+  <div class="docs-layout reveal">
+    <div>
+      <div class="doc-list">
+
+        <a class="doc-item" href="https://shade-toast-3ea.notion.site/Purple-Hydrogen-b37ba4b41abc4dcf8e0e24896c1e4b0f?pvs=74" target="_blank">
+          <div class="doc-icon green">&#128200;</div>
+          <div class="doc-meta">
+            <div class="doc-title">Hydrogen Market Differentiation</div>
+            <div class="doc-sub">A comparative analysis of grey, blue, green, and purple hydrogen production pathways &#8212; cost, carbon intensity, infrastructure requirements, and market positioning.</div>
+          </div>
+          <span class="doc-badge live">LIVE</span>
+        </a>
+
+        <a class="doc-item" href="https://drive.google.com/file/d/1ie3qrVLrLBDdb_cShzkf41QZzBAklTCn/view?usp=sharing" target="_blank">
+          <div class="doc-icon pdf">&#128196;</div>
+          <div class="doc-meta">
+            <div class="doc-title">Purple Hydrogen Whitepaper</div>
+            <div class="doc-sub">Technical overview of Purple Sulfur Bacteria, anaerobic photosynthesis mechanisms, bacterial synthesis pathways, and the biological basis for hydrogen evolution from H&#8322;S.</div>
+          </div>
+          <span class="doc-badge live">LIVE</span>
+        </a>
+
+        <a class="doc-item" href="https://drive.google.com/file/d/1DB0-nEZSdukWGw6VxBu__vyQMIDm47Dn/view?usp=sharing" target="_blank">
+          <div class="doc-icon paper">&#128203;</div>
+          <div class="doc-meta">
+            <div class="doc-title">Biohydrogen Production Platform Study</div>
+            <div class="doc-sub">CREMCo Labs &middot; January 2026 &middot; Bahram Zargar &amp; Justo Perez<br>Proof-of-concept validation. <em>R. palustris</em> achieves sustained &gt;1.5% H&#8322; concentration, GC-MS validated across three PSB strains.</div>
+          </div>
+          <span class="doc-badge live">LIVE</span>
+        </a>
+
+        <a class="doc-item" href="https://drive.google.com/file/d/1ffBOt9lzs_yldekvVYVwaMqswPrB_wtA/view?usp=sharing" target="_blank">
+          <div class="doc-icon paper">&#128300;</div>
+          <div class="doc-meta">
+            <div class="doc-title">Isolation and Modification of Purple Sulfur Bacteria from Waste Plan</div>
+            <div class="doc-sub">Screening and characterisation study identifying high-performing Purple Sulfur Bacteria strains from sulfide-rich waste environments for biohydrogen production.</div>
+          </div>
+          <span class="doc-badge live">LIVE</span>
+        </a>
+
+        <div class="doc-item" style="opacity:.42;cursor:default">
+          <div class="doc-icon ph">+</div>
+          <div class="doc-meta">
+            <div class="doc-title">Isolation and Screening of Hydrogen-Producing Bacteria from Waste for Biohydrogen Production &#8212; Final Report</div>
+            <div class="doc-sub">Full peer-reviewed version. Completion in progress.</div>
+          </div>
+          <span class="doc-badge soon">COMING SOON</span>
+        </div>
+
+        <div class="doc-item" style="opacity:.42;cursor:default">
+          <div class="doc-icon ph">+</div>
+          <div class="doc-meta">
+            <div class="doc-title">Photobioreactor Engineering &amp; Scale-Up Validation</div>
+            <div class="doc-sub">Design specifications, performance benchmarks, and validation data for the 5&#8211;50L IoT-enabled pilot photobioreactor. Expected Summer 2026.</div>
+          </div>
+          <span class="doc-badge soon">COMING SOON</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="deck-feature reveal d1">
+      <div class="deck-label">Investor Pitch Deck</div>
+      <div class="deck-title">FULL PITCH DECK</div>
+      <p class="deck-body">Our comprehensive pitch deck covers the full opportunity &#8212; the two problems, our biological solution, market sizing, go-to-market strategy, traction to date, and the team behind it. Available for investors, grant committees, and strategic partners.</p>
+      <div class="deck-slides">
+        <div class="ds"><span class="ds-num">01</span><span class="ds-title">The Problem</span><span class="ds-desc">H&#8322;S disposal + clean H&#8322; gap</span></div>
+        <div class="ds"><span class="ds-num">02</span><span class="ds-title">Status Quo</span><span class="ds-desc">What industries currently spend</span></div>
+        <div class="ds"><span class="ds-num">03</span><span class="ds-title">The Solution</span><span class="ds-desc">Biological gas conversion system</span></div>
+        <div class="ds"><span class="ds-num">04</span><span class="ds-title">Market</span><span class="ds-desc">TAM $6.2B+ &middot; SAM $820M &middot; SOM $45M</span></div>
+        <div class="ds"><span class="ds-num">05</span><span class="ds-title">Differentiation</span><span class="ds-desc">Why nothing else does this</span></div>
+        <div class="ds"><span class="ds-num">06</span><span class="ds-title">Go-To-Market</span><span class="ds-desc">Path to $1M ARR</span></div>
+        <div class="ds"><span class="ds-num">07</span><span class="ds-title">Traction</span><span class="ds-desc">DMZ, CREMCo study, pilots</span></div>
+        <div class="ds"><span class="ds-num">08</span><span class="ds-title">The Team</span><span class="ds-desc">Founders, advisors &amp; researchers</span></div>
+      </div>
+      <div class="deck-actions">
+        <a href="#https://drive.google.com/file/d/1MKq90zf5o5ux9wcnxw07-G2-UklcUgGl/view?usp=sharing" class="btn-p" target="_blank">Download Pitch Deck</a>
+        <a href="#contact" class="btn-s">Request Materials &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="mkt-sec" id="market">
+  <div class="s-tag">The Market</div>
+  <h2 class="s-title">Global.<br><em>Growing.</em><br>Urgent.</h2>
+  <p class="s-body">H&#8322;S waste management is a mandatory spend across every major industrial sector. Biohydrogen is the world&#8217;s fastest-growing clean energy category. Our platform sits at the intersection of both.</p>
+  <div class="mkt-grid reveal">
+    <div class="mc tam">
+      <div class="m-acr">TOTAL ADDRESSABLE MARKET</div>
+      <div class="m-val">$6.2B+</div>
+      <div class="m-name">Global H&#8322;S Removal + Biohydrogen</div>
+      <div class="m-desc">H&#8322;S scavenger market reaching $2.01B by 2030 at 5.2% CAGR. Biohydrogen sector at $193M in 2025, growing at 30.1% CAGR. Industrial wastewater treatment adds further scale across every major industrial geography worldwide.</div>
+    </div>
+    <div class="mc sam">
+      <div class="m-acr">SERVICEABLE ADDRESSABLE MARKET</div>
+      <div class="m-val">$820M</div>
+      <div class="m-name">North America, Caribbean &amp; Asia-Pacific</div>
+      <div class="m-desc">Industrial H&#8322;S operators in oil &amp; gas, agriculture, pulp &amp; paper, shipbuilding, and defence manufacturing where on-site modular biological treatment is technically feasible and economically justified.</div>
+    </div>
+    <div class="mc som">
+      <div class="m-acr">SERVICEABLE OBTAINABLE MARKET</div>
+      <div class="m-val">$45M</div>
+      <div class="m-name">First 20&#8211;30 High-Value Deployments</div>
+      <div class="m-desc">Years 1&#8211;5 target across natural gas processing, agriculture, and industrial manufacturing. Generating $1&#8211;3M ARR per deployment at scale via equipment licensing and recurring service contracts.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-sec" id="team">
+  <div class="s-tag">The Team</div>
+  <h2 class="s-title">Built By Founders<br><em>Who Know The Science.</em></h2>
+  <div class="founders reveal">
+    <div class="fc">
+      <div class="f-role">Co-Founder </div>
+      <div class="f-name">UNMOL SHARMA</div>
+      <div class="f-uni">Electrical &amp; Computer Engineering &middot; Vanderbilt University</div>
+      <p class="f-bio">Leads company strategy, fundraising, and partner development. Leads IoT and bioreactor design teams. </p>
+    </div>
+    <div class="fc">
+      <div class="f-role">Co-Founder </div>
+      <div class="f-name">JACOB APPLETON</div>
+      <div class="f-uni">Microbiology &middot; Minerva University</div>
+      <p class="f-bio">Leads all bacterial development, bacterial strain research, biological engineering, and research partnerships.</p>
+    </div>
+  </div>
+
+  <div class="adv-title reveal">Supporters, Advisors &amp; Research Partners</div>
+  <div class="adv-grid reveal d1">
+    <div class="ac">
+      <div class="a-name">Harry Gandhi</div>
+      <div class="a-role">Entrepreneur &amp; Initial Investor</div>
+      <div class="a-bio">Early-stage investor and entrepreneur providing initial capital and strategic guidance on company building and market entry.</div>
+      <span class="a-tag">INVESTOR</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Tyler Cowen</div>
+      <div class="a-role">World-Renowned Economist</div>
+      <div class="a-bio">Professor at George Mason University, host of Conversations with Tyler, one of the world&#8217;s most cited and influential economists.</div>
+      <span class="a-tag">ADVISOR</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Ahmed Tanashi</div>
+      <div class="a-role">Senior Advisor, Mitacs Accelerate</div>
+      <div class="a-bio">Mitacs advisor supporting Purple Hydrogen&#8217;s connection to Canadian university research programmes and graduate research partnerships.</div>
+      <span class="a-tag">MITACS</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Bahram Zargar</div>
+      <div class="a-role">Lead Researcher, CREMCo Labs</div>
+      <div class="a-bio">25+ years in microbiology. Lead researcher on our proof-of-concept study. Expert in anaerobic bacterial cultivation and fermentation.</div>
+      <span class="a-tag">RESEARCH</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Justo Perez</div>
+      <div class="a-role">Study Director, CREMCo Labs</div>
+      <div class="a-bio">25+ years in microbiology and fermentation. Study Director for our biohydrogen production platform validation study.</div>
+      <span class="a-tag">RESEARCH</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Paul Hacking</div>
+      <div class="a-role">Head of Science, TMU DMZ</div>
+      <div class="a-bio">Head of Science Discovery Zone at the TMU DMZ Accelerator. Supported our incubation, lab access, and early scientific development.</div>
+      <span class="a-tag">INCUBATOR</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Morgan Wyatt</div>
+      <div class="a-role">Fundspoke &#8212; Grant Strategy</div>
+      <div class="a-bio">Canadian grant funding consultant. Advising on HARVEST wasteCANcreate and broader non-dilutive funding strategy.</div>
+      <span class="a-tag">GRANTS</span>
+    </div>
+    <div class="ac">
+      <div class="a-name">Tarig Abdellatief</div>
+      <div class="a-role">ITB Strategy, Arctech Accelerate</div>
+      <div class="a-bio">Former Canadian Army. Supports our Industrial &amp; Technological Benefits strategy for Canadian defence sector engagements.</div>
+      <span class="a-tag">DEFENCE</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="cta-orb"></div>
+  <div class="cta-label">Get Involved</div>
+  <h2 class="cta-title">
+    <div class="ca">WASTE</div>
+    <div class="cb">INTO</div>
+    <div class="cc">FUEL.</div>
+  </h2>
+  <p class="cta-sub">We&#8217;re looking for industrial partners, research collaborators, investors, and grant partners. Let&#8217;s talk.</p>
+  <div class="cta-btns">
+    <a href="mailto:unmolsharma05@gmail.com" class="btn-p">Contact the Team</a>
+    <a href="#documents" class="btn-s">View Research &#8594;</a>
+  </div>
+  <div class="contact-row">
+  <a href="mailto:unmolsharma05@gmail.com">unmolsharma05@gmail.com</a>
+  &nbsp;&middot;&nbsp;
+  <a href="mailto:jacobappleton2@gmail.com">jacobappleton2@gmail.com</a>
+  &nbsp;&middot;&nbsp;Toronto, ON
+</div>
+</section>
+
+<footer>
+  <div class="fl">PURPLE <span>H&#8322;</span> CORP.</div>
+  <div class="fc2">&#169; 2026 PURPLE HYDROGEN CORP. &middot; BIOLOGICAL GAS CONVERSION SYSTEMS</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('nav').style.background=window.scrollY>50?'rgba(6,4,15,0.97)':'rgba(6,4,15,0.75)'});
+function toggleMenu(){document.getElementById('nav-links').classList.toggle('open')}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav-links').classList.remove('open')));
+</script>
+</body>
+</html>
