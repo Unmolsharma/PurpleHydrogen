@@ -296,17 +296,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 3.5
     <div class="fi">Defence manufacturing waste</div>
     <div class="fi">Pulp &amp; paper sulfide streams</div>
   </div>
-  <div class="farr">&#9654;</div>
   <div class="fbox fbig">
     <div class="flabel">&#9879; Purple Hydrogen Bioreactor</div>
     <div class="bstep"><span>&#129516;</span><span><b>Purple Sulfur Bacteria culture</b> &#8212; live microbial system using H&#8322;S as electron donor in anaerobic photosynthesis</span></div>
-    <div class="bstep"><span>&#128161;</span><span><b>850nm near-IR LED arrays</b> &#8212; precise wavelength matching the bacterial absorption peak, energy-efficient and fully programmable</span></div>
-    <div class="bstep"><span>&#128260;</span><span><b>N&#8322; / inert gas purge system</b> &#8212; maintains strict anaerobic conditions and activates nitrogenase and hydrogenase enzyme pathways</span></div>
+    <div class="bstep"><span>&#128161;</span><span><b>LED arrays</b> &#8212; precise wavelength matching the bacterial absorption peak, energy-efficient and fully programmable</span></div>
+    <div class="bstep"><span>&#128260;</span><span><b>Inert gas purge system</b> &#8212; maintains strict anaerobic conditions and activates nitrogenase and hydrogenase enzyme pathways</span></div>
     <div class="bstep"><span>&#128225;</span><span><b>IoT sensor network</b> &#8212; real-time pH, temperature, dissolved gas, and biomass monitoring with auto-adjustment and remote dashboard</span></div>
-    <div class="bstep"><span>&#127777;</span><span><b>Temperature regulation (25&#8211;35&#176;C)</b> &#8212; active thermal management for optimal bacterial metabolic activity and hydrogen yield</span></div>
+    <div class="bstep"><span>&#127777;</span><span><b>Temperature regulation </b> &#8212; active thermal management for optimal bacterial metabolic activity and hydrogen yield</span></div>
     <div class="bstep"><span>&#9879;</span><span><b>H&#8322;S inlet + H&#8322; capture outlet</b> &#8212; controlled feedstock delivery with inline purity monitoring validated by GC-MS</span></div>
   </div>
-  <div class="farr">&#9654;</div>
   <div class="fbox fout">
     <div class="flabel">&#10003; Outputs</div>
     <div class="fi">Clean H&#8322; gas &#8212; $3&#8211;7/kg</div>
@@ -549,11 +547,21 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 3.5
 </div>
 </section>
 
-<footer>
-  <div class="fl">PURPLE <span>H&#8322;</span> INC.</div>
-  <div class="fc2">&#169; 2026 PURPLE HYDROGEN INC. &middot; BIOLOGICAL GAS CONVERSION SYSTEMS</div>
+<div class="footer-divider"></div>
+  <div class="footer-legal">
+    <div class="fc2">
+      &#169; 2026 Purple Hydrogen Corp. All rights reserved.<br>
+      Toronto, Ontario, Canada &middot; purplehydrogen.ca<br>
+      BIOLOGICAL GAS CONVERSION SYSTEMS
+    </div>
+    <div class="footer-disclaimers">
+      The information on this website is for informational purposes only and does not constitute an offer to sell or solicitation of an offer to buy any securities.<br>
+      Forward-looking statements involve risks and uncertainties. Past performance of technology at proof-of-concept scale is not indicative of future commercial results.<br>
+      All trademarks and intellectual property are the property of Purple Hydrogen Corp.
+    </div>
+  </div>
 </footer>
-
+ 
 <script>
 const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
